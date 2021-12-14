@@ -40,51 +40,31 @@ const tijera ='tijera'
 
 
 
-
-// User game PIEDRA
-function userGamePiedra(){
-    let acc =0;
+// User game 
+function userGame(piedra,papel,tijera){
     const optionSelected = options.value;
     if (optionSelected === "piedra" && piedra===piedra ) {
       text.innerHTML='Empate!'
     } else if (optionSelected === "piedra" && papel === papel) 
-    { message.innerHTML='Has perdido!'
+    { text.innerHTML='Has perdido!'
      computer.innerHTML += acc++
       
     }else if (optionSelected === "piedra" && tijera === tijera){
         text.innerHTML='Has ganado!'
         player.innerHTML += acc++
-    }
-  }
-  userGamePiedra();
-  
-// User game Papel 
-  function userGamePapel(){
-    let acc =0;
-    const optionSelected = options.value;
-    if (optionSelected === "papel" && papel === papel ) {
+    } else if(optionSelected === "papel" && papel === papel ) {
       text.innerHTML='Empate!'
     } else if (optionSelected === "papel" && tijera === tijera) 
-    { message.innerHTML='Has perdido!'
+    { text.innerHTML='Has perdido!'
      computer.innerHTML += acc++
       
     }else if (optionSelected === "papel" && piedra===piedra){
         text.innerHTML='Has ganado!'
         player.innerHTML += acc++
-    }
-  }
-
-  userGamePapel();
-
-  //User game Tijera 
-
-function userGameTijera(){
-    let acc =0;
-    const optionSelected = options.value;
-    if (optionSelected === "tijera" && tijera === tijera ) {
+    }else if (optionSelected === "tijera" && tijera === tijera ) {
       text.innerHTML='Empate!'
     } else if (optionSelected === "tijera" && piedra===piedra)
-    { message.innerHTML='Has perdido!'
+    { text.innerHTML='Has perdido!'
      computer.innerHTML += acc++
       
     }else if (optionSelected === "tijera" && papel === papel ){
@@ -93,10 +73,15 @@ function userGameTijera(){
     }
   }
 
-  userGameTijera();
+  
 
-function handleButtonClick() {
-computerGame();
+
+function handleButtonClick(event) {
+  event.preventDefault();
+  computerGame();
+  userGame();
+
+
 
 
 }
