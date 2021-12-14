@@ -24,11 +24,11 @@ function getRandomNumber(max) {
 function computerGame() {
     const numRandom = getRandomNumber(10);
   if (numRandom < 3) {
-     return'piedra';
+     return 'piedra';
   } else if (numRandom >= 6) {
-    return'papel';
+    return 'papel';
   } else {
-    return'tijera';
+    return 'tijera';
   }
  
 
@@ -41,35 +41,38 @@ const tijera ='tijera'
 
 
 // User game 
-function userGame(piedra,papel,tijera){
+function userGame(){
     const optionSelected = options.value;
-    if (optionSelected === "piedra" && piedra===piedra ) {
+    const optionComputer = computerGame();
+    let acc=0;
+
+    if (optionSelected === "piedra" && optionComputer==="piedra" ) {
       text.innerHTML='Empate!'
-    } else if (optionSelected === "piedra" && papel === papel) 
+    } else if (optionSelected === "piedra" && optionComputer === "papel") 
     { text.innerHTML='Has perdido!'
-     computer.innerHTML += acc++
+      computer.innerHTML=  `computer`+(acc+=1);
       
-    }else if (optionSelected === "piedra" && tijera === tijera){
+    }else if (optionSelected === "piedra" && optionComputer === tijera){
         text.innerHTML='Has ganado!'
-        player.innerHTML += acc++
-    } else if(optionSelected === "papel" && papel === papel ) {
+        player.innerHTML = `numero de intentos:` +(acc+=1);
+    } else if(optionSelected === "papel" && optionComputer === papel ) {
       text.innerHTML='Empate!'
-    } else if (optionSelected === "papel" && tijera === tijera) 
+    } else if (optionSelected === "papel" && optionComputer === tijera) 
     { text.innerHTML='Has perdido!'
-     computer.innerHTML += acc++
+     computer.innerHTML = `Computer` +(acc+=1);
       
-    }else if (optionSelected === "papel" && piedra===piedra){
+    }else if (optionSelected === "papel" && optionComputer===piedra){
         text.innerHTML='Has ganado!'
-        player.innerHTML += acc++
-    }else if (optionSelected === "tijera" && tijera === tijera ) {
+        player.innerHTML = `Jugador` +(acc+=1);
+    }else if (optionSelected === "tijera" && optionComputer === tijera ) {
       text.innerHTML='Empate!'
-    } else if (optionSelected === "tijera" && piedra===piedra)
+    } else if (optionSelected === "tijera" && optionComputer===piedra)
     { text.innerHTML='Has perdido!'
-     computer.innerHTML += acc++
+     computer.innerHTML = `computer` +(acc+=1);
       
-    }else if (optionSelected === "tijera" && papel === papel ){
+    }else if (optionSelected === "tijera" && optionComputer=== papel ){
         text.innerHTML='Has ganado!'
-        player.innerHTML += acc++
+        player.innerHTML = `Jugador` +(acc+=1);
     }
   }
 
@@ -78,7 +81,7 @@ function userGame(piedra,papel,tijera){
 
 function handleButtonClick(event) {
   event.preventDefault();
-  computerGame();
+  
   userGame();
 
 
