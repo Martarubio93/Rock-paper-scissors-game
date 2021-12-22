@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Piedra, Papel o Tijera</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <main class="main">
-      <h1>Piedra, papel o tijera</h1>
-      <h2 >Introduce aqui tu jugada:</h2>
-      <select class='option-js'id="game" name="game">
-        <option value="option">Seleccione aqui su jugada</option>
+      <h1 class="title">Piedra, papel o tijera</h1>
+      <h2 class="title2">Introduce aqui tu jugada:</h2>
+      <select class="option-js select" id="game" name="game">
         <option value="piedra">piedra</option>
         <option value="papel">papel</option>
         <option value="tijera">tijera</option>
       </select>
-      <button class="play-js">JUGAR</button>
+      <button class="play-js play">JUGAR</button>
       <section class="messages">
-      <p class="letsplay-js">¡Vamos a Jugar!</p>
-      <p class="player"></p>
-      <p class="computer"></p>
-    </section>
+        <p class="letsplay-js clue">¡Vamos a Jugar!</p>
+        <p class="player score"></p>
+        <p class="computer score"></p>
+        <button type="reset" class="restart play">Empezar de nuevo</button>
+      </section>
     </main>
+
     <script src="./js/main.js"></script>
   </body>
 </html>

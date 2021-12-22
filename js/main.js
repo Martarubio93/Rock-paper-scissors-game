@@ -1,92 +1,102 @@
 "use strict";
 
-//Elementos HTML
-
 const button = document.querySelector(".play-js");
-const text = document.querySelector(".letsplay-js");
-const player = document.querySelector(".player");
-const computer = document.querySelector(".computer");
 const options = document.querySelector(".option-js");
+const text = document.querySelector(".letsplay-js");
+const playerAcc = document.querySelector(".player");
+const computerAcc = document.querySelector(".computer");
+const restart = document.querySelector(".restart");
 
-//Crear un n random
+//Get a random number
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 
-//Computer game
-
+// Computer with random number function
 function computerGame() {
-  const numRandom = getRandomNumber(10);
-  if (numRandom < 3) {
+  const randomNumber = getRandomNumber(10);
+  if (randomNumber < 3) {
     return "piedra";
-  } else if (numRandom >= 6) {
+  } else if (randomNumber >= 6) {
     return "papel";
   } else {
     return "tijera";
   }
 }
 
-const piedra = "piedra";
-const papel = "papel";
-const tijera = "tijera";
+// Computer vs user game
 
-// User game
 function userGame() {
-  const optionSelected = options.value;
-  const optionComputer = computerGame();
-  let acc = 0;
-
-  if (optionSelected === "piedra" && optionComputer === "piedra") {
+  let optionSelected = options.value;
+  let ComputerOption = computerGame();
+  if (optionSelected === "tijera" && ComputerOption === "tijera") {
     text.innerHTML = "¡Empate!";
-  } else if (optionSelected === "piedra" && optionComputer === "papel") {
-    text.innerHTML = "¡Has perdido!";
-    computerWinner();
-  } else if (optionSelected === "piedra" && optionComputer === tijera) {
+  } else if (optionSelected === "tijera" && ComputerOption === "papel") {
+    userScore();
     text.innerHTML = "¡Has ganado!";
-
-    playerWinner();
-  } else if (optionSelected === "papel" && optionComputer === papel) {
+  } else if (optionSelected === "tijera" && ComputerOption === "piedra") {
+    computerScore();
+    text.innerHTML = "¡Has perdido!";
+  } else if (optionSelected === "papel" && ComputerOption === "papel") {
     text.innerHTML = "¡Empate!";
-  } else if (optionSelected === "papel" && optionComputer === tijera) {
+  } else if (optionSelected === "papel" && ComputerOption === "piedra") {
+    userScore();
+   text.innerHTML = "¡Has ganado!";
+  } else if (optionSelected === "papel" && ComputerOption === "tijera") {
+    computerScore();
     text.innerHTML = "¡Has perdido!";
-
-    computerWinner();
-  } else if (optionSelected === "papel" && optionComputer === piedra) {
-    text.innerHTML = "¡Has ganado!";
-
-    playerWinner();
-  } else if (optionSelected === "tijera" && optionComputer === tijera) {
+  } else if (optionSelected === "piedra" && ComputerOption === "piedra") {
     text.innerHTML = "¡Empate!";
-  } else if (optionSelected === "tijera" && optionComputer === piedra) {
+  } else if (optionSelected === "piedra" && ComputerOption === "tijeras") {
+    userScore();
+    return text.innerHTML = "¡Has ganado!";
+  } else if (optionSelected === "piedra" && ComputerOption === "papel") {
+    computerScore();
     text.innerHTML = "¡Has perdido!";
-
-    computerWinner();
-  } else if (optionSelected === "tijera" && optionComputer === papel) {
-    text.innerHTML = "¡Has ganado!";
-
-    playerWinner();
   }
 }
 
-//Contador
-
 let acc = 0;
-function computerWinner() {
+
+//Computer acc
+function computerScore() {
   acc += 1;
-  computer.innerHTML = `Computadora: ${acc}`;
+  computerAcc.innerHTML = `Ordenador: ${acc}`;
+  if (acc === 10) {
+    collapsed();
+    return (acc = 0);
+  }
 }
 
-function playerWinner() {
+// User acc
+function userScore() {
   acc += 1;
-  player.innerHTML = `Jugador: ${acc}`;
+  playerAcc.innerHTML = `Jugador: ${acc}`;
+  if (acc === 10) {
+    collapsed();
+    return (acc = 0);
+  }
 }
 
-function handleButtonClick(event) {
+function collapsed() {
+    restart.classList.toggle("collapsed");
+  
+}
+
+function playGame(event) {
   event.preventDefault();
   userGame();
 }
 
-//Handlefunction
+function restartGame(event) {
+  event.preventDefault();
+  userScore(acc=-1);
+  computerScore(acc=-1);
+  userGame();
+  text.innerHTML = `¡Vamos a Jugar!`
+  
+}
 
-button.addEventListener("click", handleButtonClick);
+button.addEventListener("click", playGame);
+restart.addEventListener("click", restartGame);
