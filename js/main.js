@@ -42,7 +42,7 @@ function userGame() {
     text.innerHTML = "¡Empate!";
   } else if (optionSelected === "papel" && ComputerOption === "piedra") {
     userScore();
-   text.innerHTML = "¡Has ganado!";
+    text.innerHTML = "¡Has ganado!";
   } else if (optionSelected === "papel" && ComputerOption === "tijera") {
     computerScore();
     text.innerHTML = "¡Has perdido!";
@@ -50,7 +50,7 @@ function userGame() {
     text.innerHTML = "¡Empate!";
   } else if (optionSelected === "piedra" && ComputerOption === "tijeras") {
     userScore();
-    return text.innerHTML = "¡Has ganado!";
+    return (text.innerHTML = "¡Has ganado!");
   } else if (optionSelected === "piedra" && ComputerOption === "papel") {
     computerScore();
     text.innerHTML = "¡Has perdido!";
@@ -80,8 +80,7 @@ function userScore() {
 }
 
 function collapsed() {
-    restart.classList.toggle("collapsed");
-  
+  restart.classList.toggle("collapsed");
 }
 
 function playGame(event) {
@@ -91,11 +90,10 @@ function playGame(event) {
 
 function restartGame(event) {
   event.preventDefault();
-  userScore(acc=-1);
-  computerScore(acc=-1);
+  userScore((acc = -1));
+  computerScore((acc = -1));
   userGame();
-  text.innerHTML = `¡Vamos a Jugar!`
-  
+  text.innerHTML = `¡Vamos a Jugar!`;
 }
 
 button.addEventListener("click", playGame);
