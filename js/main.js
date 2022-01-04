@@ -6,9 +6,9 @@ const text = document.querySelector(".letsplay-js");
 const playerAcc = document.querySelector(".player");
 const computerAcc = document.querySelector(".computer");
 const restart = document.querySelector(".restart");
+const totalRounds = document.querySelector(".rounds");
 
 //Get a random number
-
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
@@ -55,24 +55,33 @@ function userGame() {
     computerScore();
     text.innerHTML = "¡Has perdido!";
   }
+  rounds();
 }
 
 let acc = 0;
 
 //Computer acc
 function computerScore() {
-  acc += 1;
-  computerAcc.innerHTML = `Ordenador: ${acc}`;
+  computerAcc.innerHTML = `Ordenador: ${acc++}`;
+
   if (acc === 10) {
     collapsed();
     return (acc = 0);
   }
 }
 
+//rounds acc
+function rounds() {
+  totalRounds.innerHTML = "Número de jugadas: " + acc++;
+
+  if (acc === 10) {
+    collapsed();
+    return (acc = 0);
+  }
+}
 // User acc
 function userScore() {
-  acc += 1;
-  playerAcc.innerHTML = `Jugador: ${acc}`;
+  playerAcc.innerHTML = `Jugador: ${acc++}`;
   if (acc === 10) {
     collapsed();
     return (acc = 0);
@@ -90,8 +99,9 @@ function playGame(event) {
 
 function restartGame(event) {
   event.preventDefault();
-  userScore((acc = -1));
-  computerScore((acc = -1));
+  userScore((acc = 0));
+  computerScore((acc = 0));
+  rounds((acc = 0));
   userGame();
   text.innerHTML = `¡Vamos a Jugar!`;
 }
