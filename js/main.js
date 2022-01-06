@@ -70,21 +70,23 @@ function computerScore() {
   }
 }
 
-//rounds acc
-function rounds() {
-  totalRounds.innerHTML = "Número de jugadas: " + acc++;
+let ac = 0;
 
-  if (acc === 10) {
-    collapsed();
-    return (acc = 0);
+function rounds() {
+  totalRounds.innerHTML = `Número de jugadas: ${ac++}`;
+  if (ac == 10) {
+    
+    return (ac = 0);
   }
 }
+
+let counter = 0;
 // User acc
 function userScore() {
-  playerAcc.innerHTML = `Jugador: ${acc++}`;
-  if (acc === 10) {
+  playerAcc.innerHTML = `Jugador: ${counter++}`;
+  if (counter === 10) {
     collapsed();
-    return (acc = 0);
+    return (counter = 0);
   }
 }
 
@@ -99,9 +101,10 @@ function playGame(event) {
 
 function restartGame(event) {
   event.preventDefault();
-  userScore((acc = 0));
-  computerScore((acc = 0));
-  rounds((acc = 0));
+  computerAcc.innerHTML = `Ordenador: ${(acc = 0)}`;
+  playerAcc.innerHTML = `Jugador: ${(counter = 0)}`;
+  totalRounds.innerHTML = `Número de jugadas: ${(ac = 0)}`;
+  userScore();
   userGame();
   text.innerHTML = `¡Vamos a Jugar!`;
 }
