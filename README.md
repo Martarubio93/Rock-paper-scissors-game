@@ -1,5 +1,5 @@
 ## Rock paper or scissors
-This exercise consist of developing the famous game "Rock, paper or scissors", you can select the option you want to play with. 
+This exercise consist of developing the famous game "Rock, paper or scissors" you can select the option you want to play with. 
 You will have 10 attemps, after that you can press the button and reestart the game.
 
 ## Getting started
