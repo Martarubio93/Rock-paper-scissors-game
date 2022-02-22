@@ -6,9 +6,9 @@ You will have 10 attemps, after that you can press the button and reestart the g
 
 Clone or download the repository in your computer.
 
-# `npm install`
+ `npm install`
 
-# `npm start `
+ `npm start `
 
 ## Tech stack
 - JavaScript
